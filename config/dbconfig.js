@@ -9,8 +9,12 @@ const dbconnection = new Sequelize(
 
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
+    dialectOptions: {
+        timezone: "local",
+    },
+    // timezone: "+00:00",
+    // timezone: "Z",
     dialect: 'mysql',
-    timezone: "+4:00",
     define: {
         timestamps: true
     },
