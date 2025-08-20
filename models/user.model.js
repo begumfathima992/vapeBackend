@@ -8,6 +8,7 @@ const userModel = dbconnection.define(
     phone_number: { type: DataTypes.STRING, required: true },
     address: { type: DataTypes.STRING, required: true },
     password: { type: DataTypes.STRING, required: true },
+    access_token: { type: DataTypes.STRING, required: false, allowNull: true },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,

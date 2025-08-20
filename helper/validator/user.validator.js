@@ -7,3 +7,17 @@ export const UserSchema = Joi.object({
     password: Joi.string().min(4).required().label('password')
 })
 
+
+
+export const USerLoginSchema = Joi.object({
+    phone_number: Joi.string()
+        .trim()
+        .required()
+        .label('phone_number'),
+    password: Joi.string()
+        .trim().
+        min(3).max(50)
+        .required()
+        .label('password')
+});
+
