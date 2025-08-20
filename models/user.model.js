@@ -9,6 +9,7 @@ const userModel = dbconnection.define(
     address: { type: DataTypes.STRING, required: true },
     password: { type: DataTypes.STRING, required: true },
     access_token: { type: DataTypes.STRING, required: false, allowNull: true },
+    user_type: { type: DataTypes.ENUM("RETAILER", "VENDOR"), defaultValue: "RETAILER" },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
