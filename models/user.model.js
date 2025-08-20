@@ -7,6 +7,7 @@ const userModel = dbconnection.define(
     shop_name: { type: DataTypes.STRING, required: true },
     phone_number: { type: DataTypes.STRING, required: true },
     address: { type: DataTypes.STRING, required: true },
+    password: { type: DataTypes.STRING, required: true },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
