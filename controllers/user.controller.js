@@ -1,7 +1,7 @@
 import Joi from "joi";
-import userServiceObj from "../services/user.services";
+import userServiceObj from "../services/user.services.js";
 import moment from 'moment'
-import { UserSchema } from "../helper/validator/user.validator";
+import { UserSchema } from "../helper/validator/user.validator.js";
 
 
 const options = {
