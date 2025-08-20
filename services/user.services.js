@@ -7,17 +7,19 @@ import bcrypt from 'bcrypt'
 class UserService {
     async regsiter(req, res) {
         try {
-            let { phone_number, address, shop_name } = req.body
+            let { phone_number, address, shop_name, password } = req.body
             // console.log(req.body,'req.bodyyyyyyy')
+
             let findPhoneExist = await userModel.findOne({ where: { phone_number: phone_number }, raw: true, attribute: ['id'] })
             // console.log(findPhoneExist,'findPhoneExistfindPhoneExist')
             if (findPhoneExist && findPhoneExist?.id) {
-                return res.status(400).json({ message: `This phone is already register, kindly login your account`, statusCode: 400, success: false })
+                return res.status(400).json({ message: `This Phone : ${phone_number} is already register, kindly login your account`, statusCode: 400, success: false })
             }
-            let temp_p = await encryptStringWithKey((Math.round(Math.random() * 40000780) + shop_name).toLowerCase());
-            temp_p = temp_p?.slice(0, 6)
-            let encrypt = await bcrypt.hash(temp_p, salt);
-            console.log(encrypt, 'encrypt,encrypt,encrypt,', temp_p)
+            // password = await encryptStringWithKey((Math.round(Math.random() * 40000780) + shop_name).toLowerCase());
+            // password = temp_p?.slice(0, 6)
+
+            let encrypt = await bcrypt.hash(password, salt);
+            // console.log(encrypt, 'encrypt,encrypt,encrypt,', 'temp_p')
             // return
             let obj = {
                 phone_number, shop_name, address, password: encrypt,
