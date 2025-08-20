@@ -18,6 +18,6 @@ class UserService {
         }
     }
 }
-const userServiceObj = new UserService
+const userServiceObj = new UserService()
 
 export default userServiceObj

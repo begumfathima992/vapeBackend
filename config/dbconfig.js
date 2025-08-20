@@ -7,8 +7,8 @@ const dbconnection = new Sequelize(
     process.env.DB_USERNAME,
     process.env.DB_PASSWORD, {
 
-    host: process.env.HOST,
-    port: process.env.PORT,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: 'mysql',
     timezone: "+4:00",
     define: {
