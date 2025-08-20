@@ -18,7 +18,7 @@ class UserService {
             temp_p = temp_p?.slice(0, 6)
             let encrypt = await bcrypt.hash(temp_p, salt);
             console.log(encrypt, 'encrypt,encrypt,encrypt,', temp_p)
-            return
+            // return
             let obj = {
                 phone_number, shop_name, address, password: encrypt,
             }
