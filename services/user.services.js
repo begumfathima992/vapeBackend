@@ -71,7 +71,6 @@ class UserService {
         }
     }
 
-
     async logout(req, res) {
         try {
             let user_obj = req.userData
