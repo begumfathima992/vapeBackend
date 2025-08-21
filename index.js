@@ -1,6 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import userRoutes from './routes/user.routes.js'
+import { environmentVar } from './config/environmentVariable.js'
+
 dotenv.config()
 
 const app = express()
@@ -12,11 +14,7 @@ app.use("/hellow", (req, res) => {
 })
 app.use("/user", userRoutes)
 
-app.listen(process.env.PORT, (res, err) => {
-    if (err) {
-        console.log(err, "erro occurred while connecting the site")
-        return
-    }
-    console.log(`success listening to port : ${process.env.PORT}`)
+app.listen(environmentVar.PORT, (res, err) => {
+    console.log(`success listening to port : ${environmentVar.PORT}`)
 })
 
