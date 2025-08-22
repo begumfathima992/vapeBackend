@@ -5,7 +5,6 @@ const productModel = dbconnection.define(
     'product', {
     id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true, unique: true },
     title: { type: DataTypes.STRING, required: true },
-    slug: { type: DataTypes.STRING, required: false, allowNull: true },
     brand_id: { type: DataTypes.STRING, required: true },
     description: { type: DataTypes.STRING, required: true },
     images: { type: DataTypes.JSON, required: false, allowNull: true },
@@ -20,6 +19,14 @@ const productModel = dbconnection.define(
     is_deleted: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+    },
+    minimum_order_quantity: {
+        type: DataTypes.INTEGER,
+        defaultValue: 1,
     },
     created_by: {
         type: DataTypes.BIGINT,
