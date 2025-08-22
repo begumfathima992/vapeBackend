@@ -7,13 +7,7 @@ export const CartSchema = Joi.object({
 
 
 export const deleteProductFromCartSchema = Joi.object({
-  product_id: Joi.string().min(1).max(50).trim().required().invalid('undefined')
-    // .
-    // messages({
-    //   "any.required": "product is required",
-    //   "string.empty": "product cannot be empty",
-    //   "any.invalid": "product cannot be 'undefined'",
-    // }),
+  product_id: Joi.number().required().invalid('undefined')
     .label("product"),
 }).required().min(1).label("Data");
 
@@ -37,7 +31,7 @@ export const UpdateOrderSchema = Joi.object({
     .valid("complete", "failed", "pending")
     .required()
     .label("payment_status"),
-});
+}).required();
 
 export const update_order_status_schema = Joi.object({
   order_id: Joi.string()
@@ -51,7 +45,7 @@ export const update_order_status_schema = Joi.object({
     .required()
     .label("order id"),
   status: Joi.string().trim().valid("cancelled").required().label("status"),
-});
+}).required();
 
 export const request_return_schema = Joi.object({
   order_id: Joi.string()
@@ -65,7 +59,7 @@ export const request_return_schema = Joi.object({
     .required()
     .label("order id"),
   status: Joi.string().trim().required().label("status"),
-});
+}).required();
 
 export const cancel_order_schema = Joi.object({
   order_id: Joi.string()
@@ -78,7 +72,7 @@ export const cancel_order_schema = Joi.object({
     })
     .required()
     .label("order id"),
-});
+}).required();
 
 //admin
 export const UpdateDeliveryDateSchema = Joi.object({
@@ -139,11 +133,7 @@ export const createPaymentIntentSchema = Joi.object({
     .label("amount"),
   currency: Joi.string().trim().required().label("currency"),
 });
-export const wishlistSchema = Joi.object({
-  productId: Joi.string().max(50).trim().required().label("productId"),
-  variant_id: Joi.string().max(50).trim().required().label("variant_Id"),
 
-});
 
 export const revertdatatoCartSchema = Joi.object({
   order_id: Joi.string().max(50).trim().required().label("order_id"),

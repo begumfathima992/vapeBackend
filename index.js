@@ -4,6 +4,7 @@ import userRoutes from './routes/user.routes.js'
 import { environmentVar } from './config/environmentVariable.js'
 import productRoutes from './routes/product.routes.js'
 import cartRoutes from './routes/cart.routes.js'
+import WishlistRoutes from './routes/wishlist.routes.js'
 
 dotenv.config()
 
@@ -18,6 +19,8 @@ app.use("/hellow", (req, res) => {
 app.use("/user", userRoutes)
 app.use("/product", productRoutes)
 app.use("/cart", cartRoutes)
+app.use("/wishlist", WishlistRoutes)
+
 
 app.listen(environmentVar.PORT, (res, err) => {
     console.log(`success listening to port : ${environmentVar.PORT}`)

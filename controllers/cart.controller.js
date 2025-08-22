@@ -1,4 +1,4 @@
-import { CartSchema, deleteProductFromCartSchema } from "../helper/validator/cartValidator.js";
+import { CartSchema, deleteProductFromCartSchema } from "../helper/validator/cart.validator.js";
 import CartServiceObj from "../services/cart.services.js";
 
 
@@ -30,6 +30,7 @@ class CartController {
     }
   }
 
+
   async deleteProduct(req, res, next) {
     try {
       let { error } = deleteProductFromCartSchema.validate(req.body, options);
@@ -40,7 +41,7 @@ class CartController {
         next();
         return;
       }
-      console.log(req.body,"e delete ")
+      console.log(req.body, "e delete ")
       await CartServiceObj.deleteFromCart(req, res, next)
     } catch (err) {
       return res
@@ -68,6 +69,26 @@ class CartController {
     }
   }
 
+
+  async update_quantity(req, res, next) {
+    try {
+      let { error } = CartSchema.validate(req.body, options);
+      if (error) {
+        res.locals.statusCode = 400;
+        res.locals.success = false;
+        res.locals.message = error.details[0]?.message;
+        next();
+        return;
+      }
+
+      await CartServiceObj.update_quantity(req, res, next);
+    } catch (err) {
+      console.log(err, "eeeoro in add cart")
+      return res
+        .status(500)
+        .json({ message: err?.message, success: false, statusCode: 500 });
+    }
+  }
 
 
 }
