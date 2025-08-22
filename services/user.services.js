@@ -4,6 +4,7 @@ let salt = 10
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
+
 class UserService {
     async regsiter(req, res) {
         try {
